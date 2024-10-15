@@ -5,7 +5,11 @@ export default {
     './src/**/*.{html,js,ts}', // Scan any HTML, JS, or TS files in src folder
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        "5xl": "3rem",
+      },
+    },
   },
   plugins: [],
 };
