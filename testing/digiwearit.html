@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400&display=swap" rel="stylesheet">
     <title>Digiwearit</title>
     <style>
         body {
@@ -11,6 +12,7 @@
             width: 100vw;
             margin: 0;
             color: white;
+            font-family: 'PT Sans Caption', sans-serif;
         }
 
         .container {
@@ -48,6 +50,8 @@
             height: 100%;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             display: none;
         }
 
@@ -59,7 +63,8 @@
             height: 75%;
             width: 75%;
             border-radius: 2rem;
-            background-color: white;
+            /*background-color: white;*/
+            background: radial-gradient(circle at bottom left, rgba(167, 159, 253, 0.5), rgba(255, 255, 255, 1) 45%);
             padding: 3em;
         }
 
@@ -83,14 +88,95 @@
             width: 60%;
             height: 90%;
             border-radius: 2rem;
-            padding: 2.5rem;
+            padding: 1rem 3rem;
             display: flex;
-            justify-content: center;
-            align-items: top;
+            justify-content: top;
+            align-items: center;
+            flex-direction: column;
         }
 
         #privacy_color {
             color: #FF7BDA;
+        }
+
+        #privacy_title {
+            font-size: 29px;
+            font-weight: bold;
+        }
+
+        .privacy_notice,
+        .first_check,
+        .second_check,
+        .consent_button {
+            align-self: flex-start;
+        }
+
+        p,
+        h2 {
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .first_check,
+        .second_check {
+            font-size: 13px;
+            font-weight: 400;
+            display: flex;
+            align-items: start;
+            margin: 15px 0px;
+        }
+
+        .cam_button,
+        .consent_button {
+            font-weight: bolder;
+            background-color: transparent;
+            color: white;
+            padding: 7px 40px;
+            border: 2px solid white;
+            margin-top: 10px;
+            border-radius: 45px;
+        }
+
+        #us,
+        #consent {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-right: 20px;
+
+        }
+
+        .consent_button:hover {
+            background-color: #0b77db;
+        }
+
+        #us_text,
+        #consent_text {
+            margin: 0px;
+        }
+
+        .cam_detail {
+            background-color: white;
+            display: flex;
+            height: 75%;
+            width: 75%;
+            border-radius: 2rem;
+            position: relative;
+        }
+
+        .cam,
+        .detail {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cam {
+            background-color: black;
+            border-radius: 2rem 0 0 2rem;
+        }
+
+        .detail {
+            background: radial-gradient(circle at bottom left, rgba(167, 159, 253, 0.782), rgba(255, 255, 255, 1) 80%);
+            border-radius: 0 2rem 2rem 0;
         }
     </style>
 </head>
@@ -101,6 +187,7 @@
             Try Product
         </button>
 
+        <!-- terms and condition section-->
         <div id="terms" class="overlay" onclick="toggleTerms()">
             <div class="modal" onclick="event.stopPropagation()">
                 <img id="logo" src="Calque_1.svg" alt="Digiwearit Logo" />
@@ -111,6 +198,46 @@
                 </svg>
                 <div id="condition">
                     <h1 id="privacy_title">Our <span id="privacy_color">Privacy Promise</span> to you</h1>
+                    <p>To access this service, you must be at least 18 years old</p>
+                    <p>L’Oreal USA, Inc. (‘’L’Oreal”, “We”, or “Us”) allows you virtually try on selected products
+                        through a virtual try-on feature. If you select to use the live camera or upload a photo, Your
+                        image is processed to provide you with the virtual try-on feature consistent with this consent.
+                    </p>
+                    <h4 class="privacy_notice">Privacy Notice</h4>
+                    <div class="first_check">
+                        <input type="checkbox" name="consent" id="consent" />
+                        <label for="consent" id="consent_text">I consent to the scanning of my face and the processing
+                            of my image as
+                            described in the
+                            Virtual Try-On Information Notice and agree to all its terms, including as regards use and
+                            transfer.</label>
+                    </div>
+                    <div class="second_check">
+                        <input type="checkbox" name="us" id="us" />
+                        <label for="us" id="us_text">I am a US resident, 18+ , and agree to the Terms Of Use (Which
+                            include an
+                            arbitration
+                            provision to resolve disputes) and all terms set forth therein.</label>
+                    </div>
+                    <button class="consent_button" onclick="toggleCam()">I consent</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Cam try on section -->
+        <div id="camSection" class="overlay" onclick="toggleCam()">
+            <div class="cam_detail" onclick="event.stopPropagation()">
+                <div class="cam">
+                    <img id="logo" src="Calque_1.svg" alt="Digiwearit Logo" />
+                    <button class="cam_button">Lorem Ipsum</button>
+                </div>
+                <div class="detail">
+                    <svg id="cancel" onclick="toggleCam()" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                        viewBox="0 0 2048 2048">
+                        <path fill="black"
+                            d="m1115 1024l690 691l-90 90l-691-690l-691 690l-90-90l690-691l-690-691l90-90l691 690l691-690l90 90z" />
+                    </svg>
                 </div>
             </div>
         </div>
@@ -126,6 +253,20 @@
             termsElement.style.display = 'none';
         }
     }
+
+    const toggleCam = () => {
+        const termsElement = document.getElementById('terms');
+        if (termsElement.style.display == "flex") {
+            termsElement.style.display = "none";
+        }
+        const camElement = document.getElementById('camSection');
+
+        if (camElement.style.display === 'none' || camElement.style.display === '') {
+            camElement.style.display = 'flex';
+        } else {
+            camElement.style.display = 'none';
+        }
+    }
 </script>
 
-</html
+</html>
