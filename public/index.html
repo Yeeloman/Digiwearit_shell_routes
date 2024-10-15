@@ -4,12 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Tailwind Project</title>
-  <link href="./css/style.css" rel="stylesheet">
+  <title>Digiwearit</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-blue-900 text-center">
-  <p class="uppercase font-bold bg-red-300">test</p>
+<body class="h-screen w-screen">
+  <div class="relative w-full h-full  flex justify-center items-center bg-red-300">
+    <button
+      class="bg-blue-500 text-white font-semibold border rounded-md border-blue-800 hover:bg-blue-700 hover:border-blue-500 p-3"
+      onclick="openDigiSpace()">
+      Try Product
+    </button>
+
+
+    <div class="h-[500px] w-[500px] rounded-lg bg-white absolute">
+      test
+    </div>
+
+  </div>
 </body>
+
+<script>
+  const openDigiSpace = () => {
+    console.log('its working')
+  }
+</script>
 
 </html>

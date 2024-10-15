@@ -1,13 +1,11 @@
-import { serve } from "bun";
-
 let PORT = 3000;
 let index = "./public/index.html";
 
-serve({
-    fetch(req) {
+const server = Bun.serve({
+    port: PORT,
+    fetch(_) {
         return new Response(Bun.file(index));
     },
-    port: PORT,
 });
 
-console.info(`serving at http://localhost:${PORT}/`)
+console.log(`Listening on http://localhost:${server.port} ...`);

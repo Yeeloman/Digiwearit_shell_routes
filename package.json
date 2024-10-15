@@ -1,7 +1,8 @@
 {
   "name": "digiwearit_shell_routes",
   "module": "index.ts",
-    "scripts": {
+  "scripts": {
+    "start": "bun run --watch index.ts",
     "build:css": "npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/style.css --minify",
     "dev:css": "npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/style.css --watch"
   },
