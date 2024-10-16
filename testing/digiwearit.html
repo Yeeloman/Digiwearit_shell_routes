@@ -63,7 +63,6 @@
             height: 75%;
             width: 75%;
             border-radius: 2rem;
-            /*background-color: white;*/
             background: radial-gradient(circle at bottom left, rgba(167, 159, 253, 0.5), rgba(255, 255, 255, 1) 45%);
             padding: 3em;
         }
@@ -126,7 +125,6 @@
             margin: 15px 0px;
         }
 
-        .cam_button,
         .consent_button {
             font-weight: bolder;
             background-color: transparent;
@@ -172,11 +170,134 @@
         .cam {
             background-color: black;
             border-radius: 2rem 0 0 2rem;
+            position: relative;
         }
 
         .detail {
             background: radial-gradient(circle at bottom left, rgba(167, 159, 253, 0.782), rgba(255, 255, 255, 1) 80%);
             border-radius: 0 2rem 2rem 0;
+        }
+
+        .lorem_button,
+        .cam_logo,
+        .refit,
+        .heart {
+            position: absolute;
+        }
+
+        .lorem_button {
+            top: 13%;
+            right: 10%;
+            font-weight: lighter;
+            background-color: transparent;
+            color: white;
+            padding: 5px 30px;
+            border: 1px solid white;
+            border-radius: 45px;
+        }
+
+        .cam_logo {
+            top: 8%;
+            left: 10%;
+            width: 82px;
+            height: 82px;
+        }
+
+        .refit,
+        .heart {
+            background-color: #001333;
+            border: 2px solid #174AFF;
+            box-shadow: 0 0 10px 3px rgba(23, 74, 255, 0.75);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .refit:hover,
+        .heart:hover {
+            box-shadow: 0 0 15px 5px rgba(23, 74, 255, 0.9);
+        }
+
+        .refit {
+            font-weight: 800;
+            bottom: 10%;
+            left: 10%;
+            border-radius: 45px;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart {
+            bottom: 10%;
+            right: 10%;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .right_arrow {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            cursor: pointer;
+        }
+
+        .corners {
+            width: 230px;
+            height: 230px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .corner {
+            position: absolute;
+        }
+
+        .top_right,
+        .bottom_right {
+            right: 0%;
+        }
+
+        .top_left,
+        .bottom_left {
+            left: 0%;
+        }
+
+        .top_left,
+        .top_right {
+            top: 0%;
+        }
+
+        .bottom_right,
+        .bottom_left {
+            bottom: 0%;
+        }
+
+        .warn {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            background-color: rgb(60, 60, 60);
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #AEAEAE;
+            padding: 2px 7px;
+        }
+
+        .warn_text {
+            font-size: 9px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -229,8 +350,42 @@
         <div id="camSection" class="overlay" onclick="toggleCam()">
             <div class="cam_detail" onclick="event.stopPropagation()">
                 <div class="cam">
-                    <img id="logo" src="Calque_1.svg" alt="Digiwearit Logo" />
-                    <button class="cam_button">Lorem Ipsum</button>
+                    <img class="cam_logo" src="Calque_1.svg" alt="Digiwearit Logo" />
+                    <button class="lorem_button">Lorem Ipsum</button>
+                    <button class="refit">Refit</button>
+                    <button class="heart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" />
+                        </svg>
+                    </button>
+                    <svg class="right_arrow" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
+                        viewBox="0 0 20 20">
+                        <path fill="white" fill-rule="evenodd"
+                            d="m7.053 2.158l7.243 7.256a.66.66 0 0 1 .204.483a.7.7 0 0 1-.204.497q-3.93 3.834-7.575 7.401c-.125.117-.625.408-1.011-.024c-.386-.433-.152-.81 0-.966l7.068-6.908l-6.747-6.759q-.369-.509.06-.939q.43-.43.962-.04" />
+                    </svg>
+                    <div class="corners">
+                        <svg class="corner top_left" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em"
+                            viewBox="0 0 24 24">
+                            <path fill="none" stroke="#77767b" stroke-width="2" d="M16 4H4v12" /></svg>
+                        <svg class="corner bottom_right" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em"
+                            viewBox="0 0 24 24">
+                            <path fill="none" stroke="#77767b" stroke-width="2" d="M8 20h12V8" /></svg>
+                        <svg class="corner top_right" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em"
+                            viewBox="0 0 24 24">
+                            <path fill="none" stroke="#77767b" stroke-width="2" d="M8 4h12v12" />
+                        </svg>
+                        <svg class="corner bottom_left" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em"
+                            viewBox="0 0 24 24" style="transform: rotate(270deg);">
+                            <path fill="none" stroke="#77767b" stroke-width="2" d="M16 4H4v12" /></svg>
+                    </div>
+                    <div class="warn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 1024 1024">
+                            <path fill="#c0bfbc"
+                                d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896m0 192a58.43 58.43 0 0 0-58.24 63.744l23.36 256.384a35.072 35.072 0 0 0 69.76 0l23.296-256.384A58.43 58.43 0 0 0 512 256m0 512a51.2 51.2 0 1 0 0-102.4a51.2 51.2 0 0 0 0 102.4" />
+                        </svg>
+                        <p class="warn_text">Move into frame. (We can’t see you)</p>
+                    </div>
                 </div>
                 <div class="detail">
                     <svg id="cancel" onclick="toggleCam()" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
