@@ -41,7 +41,6 @@
         }
 
         .overlay {
-            display: flex;
             justify-content: center;
             align-items: center;
             position: absolute;
@@ -538,7 +537,7 @@
                             <button class="lenses_button">
                                 Select lenses and buy
                             </button>
-                            <button class="tryon_button">
+                            <button class="tryon_button" onclick="toggleFeedback()">
                                 Try at home for free
                             </button>
                         </div>
@@ -563,34 +562,163 @@
             </div>
         </div>
 
-        <!-- TODO: feedback section -->
-        <div></div>
+        <!-- feedback section -->
+        <div id="feedback" class="overlay" onclick="toggleFeedback()">
+            <style>
+                .feedbackSection {
+                    width: 50%;
+                    height: 80%;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: black;
+                    border: 1px solid black;
+                    border-radius: 15px;
+                }
+
+                .thanks {
+                    color: #397EEE;
+                }
+
+                #circle-container {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin: 20px;
+                }
+
+                .circle {
+                    width: 50px;
+                    height: 50px;
+                    font-weight: bolder;
+                    background-color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 20px;
+                    color: #226EEA;
+                    border: 1px solid white;
+                    margin: 5px;
+                }
+
+                .circle:hover {
+                    box-shadow: 0 0 10px 3px rgba(23, 74, 255, 0.75);
+                    cursor: pointer;
+                    transition: box-shadow 0.3s ease;
+                }
+            </style>
+            <div class="feedbackSection" onclick="event.stopPropagation()">
+                <svg id="cancel" onclick="toggleFeedback()" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                    viewBox="0 0 2048 2048">
+                    <path fill="gray"
+                        d="m1115 1024l690 691l-90 90l-691-690l-691 690l-90-90l690-691l-690-691l90-90l691 690l691-690l90 90z" />
+                </svg>
+                <img src="Calque_1.svg" alt="Digiwearit Logo">
+                <h1 class="feedback_title"><span class="thanks">Thank you</span> for you time !</h1>
+
+                <p class="feedback_text">Considering your experience with us so far, how likely are you to recommend VTO
+                    to a friend ?</p>
+
+                <div id="circle-container"></div>
+                <div class="emojis">
+                    <style>
+                        .emojis {
+                            width: 85%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+
+                        .happy,
+                        .unhappy {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+                            color: #AEB3BA;
+                        }
+
+                        .happy {
+                            color: #FF29C3;
+                        }
+                    </style>
+                    <div class="unhappy">
+                        <img src="unhappy-face.png" alt="unhappy face" width="52rem" height="52rem">
+                        <p>Not at all likely</p>
+                    </div>
+                    <div class="happy">
+                        <img src="happy-face.png" alt="happy face" width="52rem" height="52rem">
+                        <p>Extremely likely</p>
+                    </div>
+                </div>
+                <img id="corner" src="corner.png" alt="corner">
+                <style>
+                    #corner {
+                        position: absolute;
+                        bottom: 0%;
+                        right: 0%;
+                        border-radius: 15px;
+                    }
+                </style>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const toggleTerms = () => {
+            const termsElement = document.getElementById('terms');
+            if (termsElement.style.display === 'none' || termsElement.style.display === '') {
+                termsElement.style.display = 'flex';
+            } else {
+                termsElement.style.display = 'none';
+            }
+        }
+
+        const toggleCam = () => {
+            const termsElement = document.getElementById('terms');
+            if (termsElement.style.display == "flex") {
+                termsElement.style.display = "none";
+            }
+            const camElement = document.getElementById('camSection');
+
+            if (camElement.style.display === 'none' || camElement.style.display === '') {
+                camElement.style.display = 'flex';
+            } else {
+                camElement.style.display = 'none';
+            }
+        }
+
+        const toggleFeedback = () => {
+            const camElement = document.getElementById('camSection');
+
+            if (camElement.style.display == "flex") {
+                camElement.style.display = 'none';
+            }
+
+            const feedbackElement = document.getElementById('feedback');
+
+            if (feedbackElement.style.display === 'none' || feedbackElement.style.display === '') {
+                feedbackElement.style.display = 'flex';
+            } else {
+                feedbackElement.style.display = 'none';
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('circle-container');
+
+            for (let i = 1; i <= 10; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                circle.textContent = i;
+                container.appendChild(circle);
+            }
+        });
+    </script>
 </body>
-
-<script>
-    const toggleTerms = () => {
-        const termsElement = document.getElementById('terms');
-        if (termsElement.style.display === 'none' || termsElement.style.display === '') {
-            termsElement.style.display = 'flex';
-        } else {
-            termsElement.style.display = 'none';
-        }
-    }
-
-    const toggleCam = () => {
-        const termsElement = document.getElementById('terms');
-        if (termsElement.style.display == "flex") {
-            termsElement.style.display = "none";
-        }
-        const camElement = document.getElementById('camSection');
-
-        if (camElement.style.display === 'none' || camElement.style.display === '') {
-            camElement.style.display = 'flex';
-        } else {
-            camElement.style.display = 'none';
-        }
-    }
-</script>
 
 </html>
