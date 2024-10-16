@@ -496,7 +496,7 @@
                             viewBox="0 0 24 24" style="transform: rotate(270deg);">
                             <path fill="none" stroke="#77767b" stroke-width="2" d="M16 4H4v12" /></svg>
                     </div>
-                    <div class="warn">
+                    <div class="warn" onclick="toggleError()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 1024 1024">
                             <path fill="#c0bfbc"
                                 d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896m0 192a58.43 58.43 0 0 0-58.24 63.744l23.36 256.384a35.072 35.072 0 0 0 69.76 0l23.296-256.384A58.43 58.43 0 0 0 512 256m0 512a51.2 51.2 0 1 0 0-102.4a51.2 51.2 0 0 0 0 102.4" />
@@ -665,6 +665,109 @@
                 </style>
             </div>
         </div>
+
+
+        <!-- error section -->
+        <div id="error" class="overlay" onclick="toggleError()">
+            <style>
+                .errorSection {
+                    width: 70%;
+                    height: 70%;
+                    border-radius: 15px;
+                    padding: 10px;
+                    position: relative;
+                    background-color: black;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .error_img,
+                .error_detail {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                }
+
+                .cadre_error,
+                .distress {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                }
+
+                .error_title {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            </style>
+            <div class="errorSection" onclick="event.stopPropagation()">
+                <div class="error_img">
+                    <img class="cadre_error" src="cadre.png" alt="cadre" />
+                    <img class="distress" src="error.png" alt="error" />
+                </div>
+                <div class="error_detail">
+                    <svg id="cancel" onclick="toggleError()" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                        viewBox="0 0 2048 2048">
+                        <path fill="gray"
+                            d="m1115 1024l690 691l-90 90l-691-690l-691 690l-90-90l690-691l-690-691l90-90l691 690l691-690l90 90z" />
+                    </svg>
+                    <img src="Calque_1.svg" alt="Digiwearit logo" />
+                    <h1 class="error_title">Hmm, <span style="color: #397EEE;">we can't access</span> your camera</h1>
+
+                    <p>Let’s fix that so you can use Virtual Try-On. Take the steps below, and reload this page to try
+                        again.</p>
+                    <style>
+                        .quick_fix {
+                            display: flex;
+                            justify-content: center;
+                            align-self: flex-start;
+                            gap: 15px;
+                        }
+
+                        .text_error {
+                            font-size: 11px;
+                        }
+                    </style>
+                    <div class="quick_fix">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+                            <path fill="white" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" /></svg>
+                        <p class="text_error">Click on the three-dot icon in the top right corner of the browser window
+                            and select settings
+                            in the dropdown.</p>
+                    </div>
+                    <div class="quick_fix">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+                            <path fill="white" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" /></svg>
+                        <p class="text_error">Click PRIVACY AND SECURITY > SITE SETTINGS > CAMERA OR MICROPHONE .</p>
+                    </div>
+                    <div class="quick_fix">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+                            <path fill="white" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" /></svg>
+                        <p class="text_error">To allow camera access for a site you’ve previously blocked : Scroll down
+                            to ‘’ Not allowed to use your camera ‘’ , select warbyparker.com, and change the camera or
+                            microphone to ‘’Allow’’.</p>
+                    </div>
+                    <style>
+                        .reload {
+                            padding: 10px 20px;
+                            background-color: white;
+                            border-radius: 45px;
+                            margin-top: 20px;
+
+                        }
+                    </style>
+                    <button class="reload">Reload</button>
+                </div>
+                <img id="corner" src="corner.png" alt="corner">
+            </div>
+        </div>
     </div>
 
     <script>
@@ -707,6 +810,19 @@
             }
         }
 
+        const toggleError = () => {
+            const camElement = document.getElementById('camSection');
+            if (camElement.style.display == 'flex') {
+                camElement.style.display = 'none';
+            }
+            const errorElement = document.getElementById('error');
+
+            if (errorElement.style.display === 'none' || errorElement.style.display === '') {
+                errorElement.style.display = 'flex';
+            } else {
+                errorElement.style.display = 'none';
+            }
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('circle-container');
