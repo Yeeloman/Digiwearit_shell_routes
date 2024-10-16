@@ -13,6 +13,7 @@
             margin: 0;
             color: white;
             font-family: 'PT Sans Caption', sans-serif;
+            letter-spacing: -1px;
         }
 
         .container {
@@ -174,8 +175,28 @@
         }
 
         .detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: radial-gradient(circle at bottom left, rgba(167, 159, 253, 0.782), rgba(255, 255, 255, 1) 80%);
             border-radius: 0 2rem 2rem 0;
+        }
+
+        .item {
+            position: relative;
+            background-color: white;
+            border: 2px solid #696969;
+            border-radius: 15px;
+            width: 75%;
+            height: 75%;
+            padding: 20px 30px;
+        }
+
+        .item_title {
+            font-size: 25px;
+            color: black;
+            font-weight: bolder;
+            letter-spacing: -2px;
         }
 
         .lorem_button,
@@ -299,6 +320,103 @@
             font-size: 9px;
             font-weight: bold;
         }
+
+        .colors {
+            color: black;
+            margin-top: 2.5rem;
+        }
+
+        .color_palette {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+        }
+
+        .color {
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .pink {
+            background-color: #FF29C3;
+        }
+
+        .blue {
+            background-color: #397EEE;
+        }
+
+        .color_title {
+            font-weight: lighter;
+        }
+
+        .oxblood {
+            margin-top: 2rem;
+            font-size: 15px;
+            color: #ABABAB;
+        }
+
+        .sizes,
+        .last_buttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        #sizes {
+            width: 100%;
+            background-color: transparent;
+            padding: 10px 15px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .last_buttons {
+            margin-top: 3rem;
+            gap: 5px;
+        }
+
+        .lenses_button,
+        .tryon_button {
+            border: 2px solid black;
+            border-radius: 25px;
+            background-color: transparent;
+            padding: 15px 20px;
+            font-weight: bold;
+        }
+
+        .lenses_button {
+            color: black;
+        }
+
+        .lenses_button:hover {
+            background-color: rgba(128, 128, 128, 0.183);
+        }
+
+        .tryon_button {
+            color: white;
+            background-color: #FF29C3;
+            border: none;
+        }
+
+        .tryon_button:hover {
+            background-color: #d327a2;
+        }
+
+        .view_details {
+            width: 100%;
+            color: black;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 5px;
+        }
     </style>
 </head>
 
@@ -388,11 +506,59 @@
                     </div>
                 </div>
                 <div class="detail">
-                    <svg id="cancel" onclick="toggleCam()" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                        viewBox="0 0 2048 2048">
-                        <path fill="black"
-                            d="m1115 1024l690 691l-90 90l-691-690l-691 690l-90-90l690-691l-690-691l90-90l691 690l691-690l90 90z" />
-                    </svg>
+                    <div class="item">
+                        <svg id="cancel" onclick="toggleCam()" xmlns="http://www.w3.org/2000/svg" width="1em"
+                            height="1em" viewBox="0 0 2048 2048">
+                            <path fill="black"
+                                d="m1115 1024l690 691l-90 90l-691-690l-691 690l-90-90l690-691l-690-691l90-90l691 690l691-690l90 90z" />
+                        </svg>
+
+                        <h1 class="item_title">Blakeley</h1>
+
+                        <div class="colors">
+                            <p class="color_title">COLOR</p>
+                            <div class="color_palette">
+                                <div class="color black"></div>
+                                <div class="color blue"></div>
+                                <div class="color pink"></div>
+                            </div>
+                            <p class="oxblood">Oxblood Fade</p>
+                        </div>
+
+                        <div class="sizes">
+                            <label for="size" style="color: black; width: 100%;">AVAILABLE SIZES</label>
+                            <select name="size" id="sizes">
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+
+                        <div class="last_buttons">
+                            <button class="lenses_button">
+                                Select lenses and buy
+                            </button>
+                            <button class="tryon_button">
+                                Try at home for free
+                            </button>
+                        </div>
+
+                        <div class="view_details">
+                            <p>View full details</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 48 48">
+                                <defs>
+                                    <mask id="ipSRightC0">
+                                        <g fill="none" stroke-linejoin="round" stroke-width="4">
+                                            <path fill="#fff" stroke="#fff"
+                                                d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z" />
+                                            <path stroke="#000" stroke-linecap="round" d="m21 33l9-9l-9-9" />
+                                        </g>
+                                    </mask>
+                                </defs>
+                                <path fill="black" d="M0 0h48v48H0z" mask="url(#ipSRightC0)" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
