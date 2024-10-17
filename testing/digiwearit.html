@@ -711,6 +711,18 @@
                 <div class="error_img">
                     <img class="cadre_error" src="cadre.png" alt="cadre" />
                     <img class="distress" src="error.png" alt="error" />
+                    <p class="ERROR_text">ERROR</p>
+                    <style>
+                        .ERROR_text {
+                            position: absolute;
+                            top: 35%;
+                            left: 36%;
+                            transform: translate(-50%, -50%);
+                            font-weight: bolder;
+                            font-size: 20px;
+                            color: black;
+                        }
+                    </style>
                 </div>
                 <div class="error_detail">
                     <svg id="cancel" onclick="toggleError()" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
@@ -727,12 +739,22 @@
                         .quick_fix {
                             display: flex;
                             justify-content: center;
+                            align-items: flex-start;
                             align-self: flex-start;
                             gap: 15px;
+                            margin: 10PX 0PX;
+                        }
+
+                        .quick_fix svg {
+                            width: 1rem;
+                            height: 1rem;
+                            flex-shrink: 0;
+                            align-self: flex-start;
                         }
 
                         .text_error {
                             font-size: 11px;
+                            margin: 0PX;
                         }
                     </style>
                     <div class="quick_fix">
